@@ -1,6 +1,8 @@
 # obfuscate_id
 [![Build Status](https://secure.travis-ci.org/namick/obfuscate_id.png)](http://travis-ci.org/namick/obfuscate_id) [![Dependency Status](https://gemnasium.com/namick/obfuscate_id.png)](https://gemnasium.com/namick/obfuscate_id) [![Code Climate](https://codeclimate.com/github/namick/obfuscate_id.png)](https://codeclimate.com/github/namick/obfuscate_id)
 
+Updated by AHC to allow rails 4 and limit to integer range
+
 **Make your ActiveRecord ids non-obvious**
 
 ![cat with sunglasses](http://i.imgur.com/kYOtUll.jpg)
