@@ -62,7 +62,21 @@ module ObfuscateId
     # reload without deobfuscating
     def reload(options = nil)
       options = (options || {}).merge(:no_obfuscated_id => true)
-      super(options)
+      begin
+        super(options)  
+      rescue
+        #active record does not pass options into find on reload method
+        fresh_object =
+          if options && options[:lock]
+            self.class.unscoped { self.class.lock(options[:lock]).find(to_param) }
+          else
+            self.class.unscoped { self.class.find(to_param) }
+          end
+
+        @attributes = fresh_object.instance_variable_get('@attributes')
+        @new_record = false
+        self
+      end
     end
 
     def deobfuscate_id(obfuscated_id)
